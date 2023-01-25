@@ -28,7 +28,7 @@
   <div class="card-header">The best {{ object.name }} in the world</div>
   <div class="card-body">
     <h5 class="card-title">{{ object.name }}</h5>
-    <p class="card-text">{{ object.info }}</p>
+    <p class="card-text" style="padding": 10px>{{object.info|truncatewords:30}}</p>
       <p class="card-text">Стоимость: {{ object.price}} тенге</p>
   </div>
 </div>
