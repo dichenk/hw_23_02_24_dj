@@ -1,17 +1,18 @@
 from django.db import models
 
+
 NULLABLE = {'blank': True, 'null': True}
 
 class Product(models.Model):
-    name = models.CharField(max_length=250, verbose_name='Наименование')
-    info = models.TextField(verbose_name='Описание')
+    name = models.CharField(max_length=250, verbose_name='Наименование', default=None)
+    info = models.TextField(verbose_name='Описание',null=True)
 
     image = models.ImageField(upload_to='products/', **NULLABLE, verbose_name='Изображение (превью)')
 
-    category = models.CharField(max_length=250, verbose_name='Категория')
-    price = models.CharField(max_length=250, verbose_name='Цена за покупку')
-    date_create = models.DateField(auto_now_add=True, verbose_name='Дата создания')
-    date_last_change = models.DateField(auto_now=True, verbose_name='Дата последнего изменения')
+    category = models.CharField(max_length=250, verbose_name='Категория',null=True)
+    price = models.CharField(max_length=250, verbose_name='Цена за покупку',null=True)
+    date_create = models.DateField('Created Time', auto_now_add=True, null=True,)
+    date_last_change = models.DateField('Updated Time', auto_now=True, null=True)
     class Meta:
         verbose_name = 'продукт'
         verbose_name_plural = 'продукты'
@@ -22,8 +23,8 @@ class Product(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=250, verbose_name='Наименование')
-    info = models.TextField(verbose_name='Описание')
+    name = models.CharField(max_length=250, verbose_name='Наименование',null=True)
+    info = models.TextField(verbose_name='Описание',null=True)
 
     class Meta:
         verbose_name = 'категория'
