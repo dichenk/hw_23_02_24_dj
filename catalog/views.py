@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from catalog.models import Product
+from django.views.generic import ListView
 
 def hello(request):
 
@@ -10,3 +11,8 @@ def hello(request):
 
 def contacty(request):
     return render(request, 'catalog/contacts5.htm')
+
+
+
+class ProductListView(ListView):
+    model = Product
