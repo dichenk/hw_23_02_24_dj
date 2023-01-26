@@ -1,11 +1,12 @@
 from django.db import models
 
 
+
 NULLABLE = {'blank': True, 'null': True}
 
 class Product(models.Model):
     name = models.CharField(max_length=250, verbose_name='Наименование', default=None)
-    info = models.TextField(verbose_name='Описание',null=True)
+    info = models.TextField(verbose_name='Описание', null=True)
 
     image = models.ImageField(upload_to='products/', **NULLABLE, verbose_name='Изображение (превью)')
 
@@ -32,3 +33,6 @@ class Category(models.Model):
 
     def __str__(self):
         return f'{self.name}\n{self.info}\n'
+
+def __unicode__(self):
+    return u"%s" % self.your_field

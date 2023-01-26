@@ -7,3 +7,6 @@ def hello(request):
         'object_list': Product.objects.all()
     }
     return render(request, 'catalog/home.html', context)
+
+def contacty(request):
+    return render(request, 'catalog/contacts5.htm')
