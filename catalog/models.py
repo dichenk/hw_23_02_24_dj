@@ -25,7 +25,7 @@ class Product(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=250, verbose_name='Наименование',null=True)
-    info = models.TextField(verbose_name='Описание',null=True)
+    info = models.TextField(verbose_name='Описание', null=True)
 
     class Meta:
         verbose_name = 'категория'

@@ -1,0 +1,22 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="container">
+<h1>BloOoOoOoOoOoOogs (new twitter)</h1>
+{% for article in object_list %}
+    {% if article.sign_of_publication == '1' %}
+  <ul>
+    <li><a href="{{ article.id }}">{{ article.header}}</a></li>
+  </ul>
+    {% endif %}
+{% endfor %}
+
+<button type="button" class = 'first' name="myButton" onclick="window.location.href='{% url 'blog:draft' %}';">Редактор статей</button>
+<button type="button" class = 'first' name="myButton" onclick="window.location.href='{% url 'blog:create' %}';">Создать публикацию</button>
+
+    </div>
+
+{% endblock %}
+

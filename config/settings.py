@@ -86,15 +86,6 @@ DATABASES = {
         'USER': 'oleg',
         'PASSWORD': 12345,
     },
-    'my_perfect_blog': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'blog_db',
-        'HOST': 'localhost',
-        'PORT': 5432,
-        'USER': 'oleg',
-        'PASSWORD': 12345,
-    }
-
 }
 
 

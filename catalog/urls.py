@@ -12,5 +12,5 @@ urlpatterns = [
         path('', hello),
         path('contacts/', contacty),
 
-        path('list/', ProductListView.as_view(), name='list')
+        path('list/', ProductListView.as_view(), name='list'),
         ]

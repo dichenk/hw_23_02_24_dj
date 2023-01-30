@@ -1,0 +1,46 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="container">
+        <h1 class="blink3">Все статьи</h1>
+
+{% for article in object_list %}
+  <ul>
+    <li>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-3 ms-md-auto">
+                    <p>
+                        <a href="../{{ article.id }}">
+                            {{ article.header}}
+                        </a>
+                    </p>
+                </div>
+                <div class="col-md-3 ms-md-auto">
+                    ({{ article.get_sign_of_publication_display }})
+                    <p></p>создан {{ article.date_of_creation }}
+                </div>
+                <div class="col-md-3 ms-md-auto">
+                    <button type="button" class='second' name="create" onclick="window.location.href='{% url 'blog:draft' %}';">
+                        Редактировать
+                    </button>
+                    <button type="button" class='second' name="create" onclick="window.location.href='{% url 'blog:draft' %}';">
+                        Опубликовать
+                    </button>
+                    <button type="button" class='second' name="create" onclick="window.location.href='{% url 'blog:draft' %}';">
+                        Удалить
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </li>
+  </ul>
+{% endfor %}
+
+        </div>
+
+{% endblock %}
+
