@@ -1,13 +1,11 @@
 from django.db import models
-from django.urls import reverse
+from django.template.defaultfilters import slugify
 
 class The_best_blog(models.Model):
     STATUSES = (
         ('1', 'опубликован'),
         ('0', 'не опубликован')
     )
-
-
 
     header = models.CharField(max_length=250, verbose_name='Заголовок', default=None)
     slug = models.SlugField(null=True)
@@ -18,12 +16,17 @@ class The_best_blog(models.Model):
     numbers_of_views = models.PositiveBigIntegerField(default=0)
 
     class Meta:
-        verbose_name = 'блог'
+        verbose_name = 'блогuu'
         verbose_name_plural = 'блоги'
 
     def __str__(self):
         return self.header
 
-#    def get_absolute_url(self):
- #       return reverse('the_best_blog_detail', )
+    def get_absolute_url(self):
+        return f"//{self.slug}//"
+
+    def save(self, *args, **kwargs):  # new
+        if not self.slug:
+            self.slug = slugify(self.header)
+        return super().save(*args, **kwargs)
 

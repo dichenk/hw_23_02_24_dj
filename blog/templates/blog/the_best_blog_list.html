@@ -8,7 +8,8 @@
 {% for article in object_list %}
     {% if article.sign_of_publication == '1' %}
   <ul>
-    <li><a href="{{ article.id }}">{{ article.header}}</a></li>
+    <li><a href="{{ article.slug }}">{{ article.header}}</a></li>
+      {{ article.numbers_of_views}} просмотров
   </ul>
     {% endif %}
 {% endfor %}

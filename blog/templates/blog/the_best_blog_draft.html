@@ -5,6 +5,9 @@
 {% block content %}
     <div class="container">
         <h1 class="blink3">Все статьи</h1>
+        <button type="button" class='second' name="create" onclick="window.location.href='{% url 'blog:create' %}';">
+                        Создать статью
+        </button>
 
 {% for article in object_list %}
   <ul>
@@ -13,23 +16,29 @@
             <div class="row">
                 <div class="col-md-3 ms-md-auto">
                     <p>
-                        <a href="../{{ article.id }}">
+                        <a href="../{{ article.slug }}">
                             {{ article.header}}
                         </a>
                     </p>
                 </div>
                 <div class="col-md-3 ms-md-auto">
                     ({{ article.get_sign_of_publication_display }})
-                    <p></p>создан {{ article.date_of_creation }}
+                    {%  if article.sign_of_publication == '0' %}
+                        <a class="btn btn-success" href="{% url 'blog:status' article.slug %}">Опубликовать</a>
+                    {% else %}
+                        <a class="btn btn-danger" href="{% url 'blog:status' article.slug %}">Снять с публикации</a>
+                    {% endif %}
+                    <p>создан {{ article.date_of_creation }}</p>
                 </div>
                 <div class="col-md-3 ms-md-auto">
-                    <button type="button" class='second' name="create" onclick="window.location.href='{% url 'blog:draft' %}';">
+                    <p>создан {{ article.date_of_creation }}</p>
+                </div>
+
+                <div class="col-md-3 ms-md-auto">
+                    <button type="button" class='second' name="update" onclick="window.location.href='{% url 'blog:update' article.slug %}';">
                         Редактировать
                     </button>
-                    <button type="button" class='second' name="create" onclick="window.location.href='{% url 'blog:draft' %}';">
-                        Опубликовать
-                    </button>
-                    <button type="button" class='second' name="create" onclick="window.location.href='{% url 'blog:draft' %}';">
+                    <button type="button" class='second' name="delete" onclick="window.location.href='{% url 'blog:delete' article.slug %}';">
                         Удалить
                     </button>
                 </div>
