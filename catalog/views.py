@@ -9,10 +9,5 @@ def hello(request):
     }
     return render(request, 'catalog/home.html', context)
 
-def contacty(request):
-    return render(request, 'catalog/contacts5.htm')
-
-
-
 class ProductListView(ListView):
     model = Product
