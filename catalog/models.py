@@ -24,7 +24,7 @@ class Product(models.Model):
     info = models.TextField(verbose_name='Описание', null=True)
     image = models.ImageField(upload_to='products/', **NULLABLE, verbose_name='Изображение (превью)')
     category = models.ForeignKey(
-        Category, on_delete=models.SET('ratatatatata'), max_length=29, null=True
+        Category, on_delete=models.CASCADE, max_length=29, null=True
     )
     price = models.CharField(max_length=250, verbose_name='Цена за покупку', null=True)
     date_create = models.DateField('Created Time', auto_now_add=True, null=True,)
@@ -46,8 +46,8 @@ class Version(models.Model):
     )
 
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    version = models.CharField(max_length=250, verbose_name='Номер версии', null=True)
-    name_of_version = models.CharField(max_length=250, verbose_name='Название версии', null=True)
+    version = models.CharField(max_length=250, verbose_name='Номер версии', default=10, blank=False)
+    name_of_version = models.CharField(max_length=250, verbose_name='Название версии', default=10, blank=False)
     sign_of_the_current_version = models.CharField(choices=VERSIONS, auto_created=True, default='current version', max_length=22)
 
     def __str__(self):

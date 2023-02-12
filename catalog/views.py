@@ -65,5 +65,5 @@ class ProductDeleteView(DeleteView):
 
 
 class CategoryDeleteView(DeleteView):
-    model = Product
+    model = Category
     success_url = reverse_lazy('catalog:category_list')
