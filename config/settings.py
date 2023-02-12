@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'catalog2_db',
+        'NAME': 'catalog4_db',
         'HOST': 'localhost',
         'PORT': 5432,
         'USER': 'oleg',

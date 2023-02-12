@@ -8,7 +8,7 @@
     <div class="col-sm-4">
       <h2>About Me</h2>
       <h5>Photo of me:</h5>
-      <img src="https://upyachka.io/img/f_boyangreposm_2c6c344.jpg">
+      <div class="fakeimg">Fake Image</div>
       <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
       <h3 class="mt-4">Some Links</h3>
       <p>Lorem ipsum dolor sit ame.</p>
@@ -28,9 +28,21 @@
       </ul>
       <hr class="d-sm-none">
     </div>
-
+	
     <div class="col-sm-8">
+      <h2>Создать продукт</h2>
+      <h5>Title description, Dec 7, 2020</h5>
+      
+	  <p>Name: {{object.name}}
+	  <p>Info: {{object.info}}
+	  <p>Price: {{object.price}}
+	  <p>Create date: {{object.date_create}}
+	  <p>Date of last change: {{object.date_last_change}}
 
-<div class="tenor-gif-embed" data-postid="19630817" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/surfing-internet-surf-internet-internet-instagram-mail-gif-19630817">Surfing Internet Surf Internet GIF</a>from <a href="https://tenor.com/search/surfing+internet-gifs">Surfing Internet GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script></div>
+	  
+	  
+    </div>
+  </div>
+</div>
 
 {% endblock %}
