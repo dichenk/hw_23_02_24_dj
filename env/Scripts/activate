@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\code\hw_23_02_08_dj\env"
+VIRTUAL_ENV="C:\code\hw_23_02_13_dj\env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

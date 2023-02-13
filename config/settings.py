@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'catalog',
-    'blog',
     'bootstrap5',
     'crispy_forms',
     "crispy_bootstrap5",
@@ -83,7 +82,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'catalog4_db',
+        'NAME': 'catalog_db',
         'HOST': 'localhost',
         'PORT': 5432,
         'USER': 'oleg',
