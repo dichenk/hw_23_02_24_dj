@@ -8,12 +8,20 @@
     <div class="col-sm-4">
       <h2>About Me</h2>
       <h5>Photo of me:</h5>
-      <img src="https://upyachka.io/img/f_boyangreposm_2c6c344.jpg">
-      <p>Dorm. One of the tenants got into the habit of pissing on the toilet seat in the common toilet. What the neighbors just didn’t try - he doesn’t give a fuck, pissing on the toilet seat on purpose. And then one day, a neighbor came up with a cunning plan, how to teach him a lesson witty. I told my neighbors and they approved. Night has come. The neighbor hid and is waiting for a pissant. The door of his room opens, he goes out and goes to the toilet. Starts to piss, and the sound is clear - pissing on the toilet seat. A neighbor crept up behind him and shot him in the head with a shotgun.</p>
+        {% if user.is_authenticated %}
+          <img src="https://upyachka.io/img/f_boyangreposm_2c6c344.jpg">
+          <p>Dorm. One of the tenants got into the habit of pissing on the toilet seat in the common toilet. What the neighbors just didn’t try - he doesn’t give a fuck, pissing on the toilet seat on purpose. And then one day, a neighbor came up with a cunning plan, how to teach him a lesson witty. I told my neighbors and they approved. Night has come. The neighbor hid and is waiting for a pissant. The door of his room opens, he goes out and goes to the toilet. Starts to piss, and the sound is clear - pissing on the toilet seat. A neighbor crept up behind him and shot him in the head with a shotgun.</p>
+        {% else %}
+            <img src="https://media.tenor.com/1NRoxR1fXngAAAAi/hug-cat.gif">
+            <p>One family loved their cat so much that little Artyomka now lives in an orphanage with his own fucking allergies.</p>
+      {% endif %}
     </div>
 
     <div class="col-sm-8">
-
-<div class="tenor-gif-embed" data-postid="19630817" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/surfing-internet-surf-internet-internet-instagram-mail-gif-19630817">Surfing Internet Surf Internet GIF</a>from <a href="https://tenor.com/search/surfing+internet-gifs">Surfing Internet GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script></div>
+{% if user.is_authenticated %}
+    <div class="tenor-gif-embed" data-postid="19630817" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/surfing-internet-surf-internet-internet-instagram-mail-gif-19630817">Surfing Internet Surf Internet GIF</a>from <a href="https://tenor.com/search/surfing+internet-gifs">Surfing Internet GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script></div>
+{% else %}
+    <div class="tenor-gif-embed" data-postid="24534809" data-share-method="host" data-aspect-ratio="0.5625" data-width="100%"><a href="https://tenor.com/view/love-cat-love-cats-cat-cats-gif-24534809">Love Cat Love Cats GIF</a>from <a href="https://tenor.com/search/love+cat-gifs">Love Cat GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+{% endif %}
 
 {% endblock %}

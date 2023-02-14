@@ -10,7 +10,7 @@ from catalog.formset_views import ProductUpdateWithVersionView, ProductCreateWit
 app_name = CatalogConfig.name
 
 urlpatterns = [
-        path('', hello),
+        path('', hello, name='home'),
 
         path('products/', ProductListView.as_view(), name='product_list'),
         path('categories/', CategoryListView.as_view(), name='category_list'),

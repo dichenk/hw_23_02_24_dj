@@ -1,0 +1,35 @@
+{% extends 'catalog/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-4">
+      <p>Director at the school at the teachers' council.
+- Did you hear that our graduate sat down for the creation of a drug laboratory ?!
+Literature teacher:
+- I didn’t like to read, so I didn’t like the good and eternal.
+Historian:
+- I didn’t understand why to study history, so I got into it.
+Gym teacher:
+- I always scored on sports, drank Pivchansky, then vodka, well, I switched to dope.
+Chemist, wiping tears:
+And I was the only one who believed in him!</p>
+    </div>
+	<div class="col-sm-8">
+	
+	
+<form method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit">Enter</button>
+</form>
+
+
+
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

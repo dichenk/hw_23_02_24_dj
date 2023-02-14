@@ -1,0 +1,28 @@
+{% extends 'catalog/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-4">
+      <p>There is a homeless person in one shoe. He is asked:
+- What, bum, lost a shoe?
+- No, I found it.</p>
+    </div>
+	<div class="col-sm-8">
+	
+	
+<form method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit">Enter</button>
+</form>
+
+
+
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
