@@ -14,8 +14,9 @@ From that moment on, the tank ceased to be secret.</p>
     </div>
 	
     <div class="col-sm-8">
-      <h2>Дрбодрдобдрд категорию</h2>
-      
+      <h2>Придумать категорию</h2>
+	  
+      {% if user.is_authenticated %}
 	  <form method="post">
 			             <div class="form_settings">
 	  {% csrf_token %}
@@ -24,7 +25,9 @@ From that moment on, the tank ceased to be secret.</p>
 	  
 	  </div>
                </form>
-	  
+	  {% else %}
+	  <iframe src="https://giphy.com/embed/RfSJDSDzkGO6EmlASJ" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/dominicanasgottalent-payaso-dgt-dominicanatienetalento-RfSJDSDzkGO6EmlASJ">via GIPHY</a></p>
+	  {% endif %}
 	  
     </div>
   </div>

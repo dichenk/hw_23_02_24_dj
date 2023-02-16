@@ -25,7 +25,7 @@ Hans:
 	<div class="col-sm-8">
 	<h2>Список категорий</h2>
 		
-
+{% if user.is_authenticated %}
 	<table class="table">
 		<thead>
 			<tr>
@@ -47,6 +47,12 @@ Hans:
 			{% endfor %}
 		</tbody>
 	</table>
+	
+	{% else %}
+	<iframe src="https://giphy.com/embed/l0HlN5Y28D9MzzcRy" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/art-design-illustration-l0HlN5Y28D9MzzcRy">via GIPHY</a></p>
+	  {% endif %}
+	  
+	  
 	  
     </div>
 	

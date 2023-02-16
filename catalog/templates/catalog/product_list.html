@@ -21,7 +21,7 @@
 	<div class="col-sm-8">
 	<h2>Список продуктов</h2>
 		
-
+{% if user.is_authenticated %}
 	<table class="table">
 		<thead>
 			<tr>
@@ -48,6 +48,10 @@
 			{% endfor %}
 		</tbody>
 	</table>
+	  {% else %}
+	  <iframe src="https://giphy.com/embed/11PoCVGkSg46Iw" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/mrw-confusedtravolta-excel-11PoCVGkSg46Iw">via GIPHY</a></p>
+	  {% endif %}
+	  
 	  
     </div>
 	

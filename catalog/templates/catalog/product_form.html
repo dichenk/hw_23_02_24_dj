@@ -16,7 +16,7 @@
 	
     <div class="col-sm-8">
       <h2>Создание продукта</h2>
-      
+      {% if user.is_authenticated %}
 	  <form method="post">
 			<div class="form_settings">
 				{% csrf_token %}
@@ -30,8 +30,9 @@
 			
 			<button class='btn btn-primary' type='submit'>Save</button>
 		</form>
-	  
-	  
+	  {% else %}
+	  <iframe src="https://giphy.com/embed/3oz8xYfQd5358zpL0s" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/commission-tyler-naugle-3oz8xYfQd5358zpL0s">via GIPHY</a></p>
+	  {% endif %}
     </div>
   </div>
 </div>
