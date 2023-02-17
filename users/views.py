@@ -1,4 +1,5 @@
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -44,11 +45,12 @@ class CustomRegisterForm(CreateView):
 '''
 
 
-class UserEditProfileView(UpdateView):
+class UserEditProfileView(LoginRequiredMixin, UpdateView):
     model = User
     template_name = 'users/profile.html'
     form_class = CustomEditUserForm
     success_url = reverse_lazy('catalog:home')
+
 
     def get_object(self, queryset=None):
         return self.request.user
