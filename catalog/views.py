@@ -28,6 +28,7 @@ class CategoryListView(LoginRequiredMixin, ListView):
 class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
     success_url = reverse_lazy('catalog:product_list')
+    fields = '__all__'
 
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
@@ -37,7 +38,11 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
     extra_context = {
         'title': 'Добавление продукта'
     }
-
+'''
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+'''
 
 class CategoryCreateView(LoginRequiredMixin, CreateView):
     model = Category
@@ -52,8 +57,12 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:product_list')
+'''
+    def form_valid(self, form):
+#        form.instance.user = self.request.user  #по идее, это не нужно.
+        return super().form_valid(form)
 
-
+'''
 class CategoryUpdateView(LoginRequiredMixin, UpdateView):
     model = Category
     fields = '__all__'

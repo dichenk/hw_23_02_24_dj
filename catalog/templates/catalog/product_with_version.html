@@ -18,7 +18,7 @@
     <div class="col-sm-8">
 		<h2>Обновление информации о продукте</h2>
 		<h5>Title description, Dec 7, 2020</h5>
-		<form method="post">
+		<form method="post" enctype="multipart/form-data">
 			<div class="form_settings">
 				{% csrf_token %}
 				{{ form|crispy }}

@@ -17,7 +17,7 @@
     <div class="col-sm-8">
       <h2>Создание продукта</h2>
       {% if user.is_authenticated %}
-	  <form method="post">
+	  <form method="post" enctype="multipart/form-data">
 			<div class="form_settings">
 				{% csrf_token %}
 				{{ form|crispy }}

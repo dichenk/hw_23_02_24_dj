@@ -1,10 +1,6 @@
 from django.db import models
 
 
-
-NULLABLE = {'blank': True, 'null': True}
-
-
 class Category(models.Model):
     name = models.CharField(max_length=250, verbose_name='Наименование', null=True)
     info = models.TextField(verbose_name='Описание', null=True)
@@ -22,7 +18,7 @@ def __unicode__(self):
 class Product(models.Model):
     name = models.CharField(max_length=250, verbose_name='Наименование', default=None)
     info = models.TextField(verbose_name='Описание', null=True)
-    image = models.ImageField(upload_to='products/', **NULLABLE, verbose_name='Изображение (превью)')
+    image = models.ImageField(upload_to='products/', blank=True, verbose_name='Изображение (превью)')
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, max_length=29, null=True
     )
@@ -32,6 +28,7 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'продукт'
         verbose_name_plural = 'продукты'
+        ordering = ['name']
 
 
     def __str__(self):

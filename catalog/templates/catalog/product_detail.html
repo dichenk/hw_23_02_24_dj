@@ -16,11 +16,12 @@ The end has already been shot</p>
       <h2>Подробная информация о продукте</h2>
 	  
       {% if user.is_authenticated %}
-	  <p>Name: {{object.name}}
-	  <p>Info: {{object.info}}
-	  <p>Price: {{object.price}}
-	  <p>Create date: {{object.date_create}}
-	  <p>Date of last change: {{object.date_last_change}}
+          <p>Name: {{object.name}}
+          <p>Info: {{object.info}}
+          <p>Price: {{object.price}}
+          <p>Create date: {{object.date_create}}
+          <p>Date of last change: {{object.date_last_change}}
+          <img src="/media/{{object.image}}">
 {% else %}
 <iframe src="https://giphy.com/embed/3o6EhSdX5MCMf2WQUM" width="480" height="320" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/3o6EhSdX5MCMf2WQUM">via GIPHY</a></p>
 {% endif %}
