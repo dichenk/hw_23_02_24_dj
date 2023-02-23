@@ -151,3 +151,4 @@ EMAIL_HOST_PASSWORD = 'AsTSNVv7pun9'
 EMAIL_USE_SSL = True
 
 DEFAULT_FROM_EMAIL = 'fuckup@oscarbot.ru'
+BASE_URL = 'http://127.0.0.1:8000/'
