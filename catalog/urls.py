@@ -1,7 +1,4 @@
 from django.urls import path
-
-from config import settings
-from django.conf.urls.static import static
 from catalog.apps import CatalogConfig
 from catalog.views import hello, ProductListView, ProductDeleteView, \
     ProductDetailView, CategoryListView, CategoryCreateView, CategoryUpdateView, CategoryDeleteView
@@ -26,8 +23,3 @@ urlpatterns = [
 
     path('detail_product/<int:pk>/', ProductDetailView.as_view(), name='detail_product'),
 ]
-'''
-if settings.DEBUG:
-    urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-'''

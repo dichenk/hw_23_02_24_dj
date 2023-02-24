@@ -10,7 +10,6 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView, D
 
 
 def hello(request):
-
     context = {
         'object_list': Product.objects.all()
     }
@@ -38,11 +37,14 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
     extra_context = {
         'title': 'Добавление продукта'
     }
+
+
 '''
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
 '''
+
 
 class CategoryCreateView(LoginRequiredMixin, CreateView):
     model = Category
@@ -57,12 +59,16 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:product_list')
+
+
 '''
     def form_valid(self, form):
 #        form.instance.user = self.request.user  #по идее, это не нужно.
         return super().form_valid(form)
 
 '''
+
+
 class CategoryUpdateView(LoginRequiredMixin, UpdateView):
     model = Category
     fields = '__all__'
