@@ -1,4 +1,6 @@
 {% extends 'catalog/base.html' %}
+{% load custom_tag %}
+
 
 
 {% block content %}
@@ -10,10 +12,11 @@
       <p>Two straight lines meet, go to a bar and drink whiskey. In parting, one straight line says to another - “Listen, today I forgot my wallet at home, pay for me, next time we cross, I will pay for you.”</p>
 
       <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
+        {% if user.is_authenticated %}
+		<li class="nav-item">
           <a class="nav-link active" href="{% url 'catalog:create_product' %}">Create product</a>
         </li>
- 
+		{% endif %}
       </ul>
       <hr class="d-sm-none">
     </div>
@@ -21,7 +24,6 @@
 	<div class="col-sm-8">
 	<h2>Список продуктов</h2>
 		
-{% if user.is_authenticated %}
 	<table class="table">
 		<thead>
 			<tr>
@@ -30,6 +32,9 @@
 				<th scope="col">Info</th>
 				<th scope="col">Category</th>
 				<th scope="col">Price</th>
+				{% if request.user|has_group:"Moderators" %}
+				<th scope="col">Published?</th>
+				{% endif %}
 
 			</tr>
 		</thead>
@@ -41,18 +46,19 @@
 			  <td>{{object.info|truncatechars:30}}</td>
 			  <td>{{object.category}}</td>
 			  <td>{{object.price}}</td>
+			  {% if request.user|has_group:"Moderators" %}
+			  <td>{{object.get_status_display}}</td>
+			  {% if object.status == 'DF' %}
+			  <td><a href='{% url 'catalog:change_pub' object.pk %}'>Опубликовать</a></td>
+			  {% else %}
+			  <td><a href='{% url 'catalog:change_pub' object.pk %}'>Снять с публикации</a></td>
+			  {% endif %}
+			  {% endif %}
 			  <td><a href='{% url 'catalog:detail_product' object.pk %}'>Подробнее</a></td>
-			  <td><a href='{% url 'catalog:update_product' object.pk %}'>Редактировать</a></td>
-			  <td><a href='{% url 'catalog:delete_product' object.pk %}'>Удалить</a></td>
 			</tr>
 			{% endfor %}
 		</tbody>
 	</table>
-	  {% else %}
-	  <iframe src="https://giphy.com/embed/11PoCVGkSg46Iw" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/mrw-confusedtravolta-excel-11PoCVGkSg46Iw">via GIPHY</a></p>
-	  {% endif %}
-	  
-	  
     </div>
 	
   </div>

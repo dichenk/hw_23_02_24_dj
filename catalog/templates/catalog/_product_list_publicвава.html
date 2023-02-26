@@ -1,0 +1,52 @@
+{% extends 'catalog/base.html' %}
+
+
+{% block content %}
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-4">
+     
+      <p>- Grandma, why did you leave your Odnoklassniki? - They're over.</p>
+
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="">Win The Lottery</a>
+        </li>
+ 
+      </ul>
+      <hr class="d-sm-none">
+    </div>
+	
+	<div class="col-sm-8">
+	<h2>Список продуктов</h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Name</th>
+				<th scope="col">Info</th>
+				<th scope="col">Category</th>
+				<th scope="col">Price</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			{% for object in object_list %}
+			<tr>
+			  <td>{{ forloop.counter }}</td>
+			  <td>{{object.name}}</td>
+			  <td>{{object.info|truncatechars:30}}</td>
+			  <td>{{object.category}}</td>
+			  <td>{{object.price}}</td>
+			  <td><a href='{% url 'catalog:detail_product' object.pk %}'>Подробнее</a></td>
+			  <td><a href='#'>Добавить в корзину</a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>  
+    </div>
+  </div>
+</div>
+
+{% endblock %}

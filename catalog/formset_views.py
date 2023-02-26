@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import transaction
 from django.forms import inlineformset_factory
 from django.urls import reverse_lazy, reverse
@@ -6,11 +7,11 @@ from catalog.forms import VersionForm, ProductForm
 from catalog.models import Product, Version
 
 
-class ProductUpdateWithVersionView(UpdateView):
+class ProductUpdateWithVersionView(UpdateView, LoginRequiredMixin):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:product_list')
-    template_name = 'catalog/product_with_version.html'
+    template_name = 'catalog/product_update.html'
 
     def get_success_url(self, **kwargs):
         return reverse_lazy('catalog:product_list')
@@ -29,6 +30,10 @@ class ProductUpdateWithVersionView(UpdateView):
 
         context_data['formset'] = formset
         return context_data
+
+    def get_queryset(self):
+        return Product.objects.filter(author=self.request.user)
+
 
     def form_valid(self, form):
         context_data = self.get_context_data()
@@ -51,7 +56,7 @@ class ProductCreateWithVersionView(CreateView):
 
     def get_success_url(self, **kwargs):
         return reverse_lazy('catalog:product_list')
-        return reverse('catalog:detail_product', args=[self.object.pk])
+ #       return reverse('catalog:detail_product', args=[self.object.pk])
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)

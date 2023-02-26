@@ -1,15 +1,18 @@
 from django.urls import path
 from catalog.apps import CatalogConfig
-from catalog.views import hello, ProductListView, ProductDeleteView, \
-    ProductDetailView, CategoryListView, CategoryCreateView, CategoryUpdateView, CategoryDeleteView
+from catalog.views import ProductListView, ProductDeleteView, \
+    ProductDetailView, CategoryListView, CategoryCreateView, CategoryUpdateView, CategoryDeleteView, \
+    CreatorProductListView, ModeratorProductListView, change_publishing, startpage
 from catalog.formset_views import ProductUpdateWithVersionView, ProductCreateWithVersionView
 
 app_name = CatalogConfig.name
 
 urlpatterns = [
-    path('', hello, name='home'),
-
+    path('', startpage, name='home'),
     path('products/', ProductListView.as_view(), name='product_list'),
+    path('myproducts/', CreatorProductListView.as_view(), name='my_product_list'),
+    path('moderateproducts/', ModeratorProductListView.as_view(), name='moderate_product_list'),
+
     path('categories/', CategoryListView.as_view(), name='category_list'),
 
     path('create_product/', ProductCreateWithVersionView.as_view(), name='create_product'),
@@ -22,4 +25,5 @@ urlpatterns = [
     path('delete_category/<int:pk>/', CategoryDeleteView.as_view(), name='delete_category'),
 
     path('detail_product/<int:pk>/', ProductDetailView.as_view(), name='detail_product'),
+    path('change_status/<int:pk>/', change_publishing, name='change_pub')
 ]

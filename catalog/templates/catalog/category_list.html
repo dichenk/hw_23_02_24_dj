@@ -42,6 +42,7 @@ Hans:
 			  <td>{{object.name}}</td>
 			  <td>{{object.info|truncatechars:30}}</td>
 			  <td><a href='{% url 'catalog:update_category' object.pk %}'>Редактировать</a></td>
+
 			  <td><a href='{% url 'catalog:delete_category' object.pk %}'>Удалить</a></td>
 			</tr>
 			{% endfor %}

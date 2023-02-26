@@ -1,4 +1,5 @@
 {% extends 'catalog/base.html' %}
+{% load custom_tag %}
 
 
 {% block content %}
@@ -15,15 +16,19 @@ The end has already been shot</p>
     <div class="col-sm-8">
       <h2>Подробная информация о продукте</h2>
 	  
-      {% if user.is_authenticated %}
+
           <p>Name: {{object.name}}
           <p>Info: {{object.info}}
           <p>Price: {{object.price}}
           <p>Create date: {{object.date_create}}
           <p>Date of last change: {{object.date_last_change}}
           <img src="/media/{{object.image}}">
-{% else %}
-<iframe src="https://giphy.com/embed/3o6EhSdX5MCMf2WQUM" width="480" height="320" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/3o6EhSdX5MCMf2WQUM">via GIPHY</a></p>
+          <p>Create author: {{object.author}}
+          <p>Status: {{object.status}}
+      {% if user.username == object.author or request.user|has_group:"Moderators"%}
+<p><td><a href='{% url 'catalog:update_product' object.pk %}'>Редактировать</a></td></p>
+
+<p><td><a href='{% url 'catalog:delete_product' object.pk %}'>Удалить</a></td></p>
 {% endif %}
 	  
 	  
