@@ -85,13 +85,9 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'catalog_db',
-        'HOST': 'localhost',
-        'PORT': 5432,
-        'USER': 'oleg',
-        'PASSWORD': 12345,
-    },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
+    }
 }
 
 # Password validation
@@ -177,3 +173,12 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 BASE_URL = '127.0.0.1:8000'
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+        },
+    }
+}
